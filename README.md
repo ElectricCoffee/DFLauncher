@@ -6,6 +6,8 @@ I created this launcher to be able to simply run DF from the launchpad, without 
 
 ## Installation
 Just drop `DFLauncher.app` into the same folder `df` resides in (it should be called `df_osx` unless you changed it)
+* To obtain the file you need to compile it.
+* Or you can grab it [here](https://drive.google.com/folderview?id=0BzCGYG05d-yGVFRWd2U2bFJuTmc&usp=sharing), but there's no guarantee it'll be the latest version
 
 ## Credit
 Credit for the icon goes to [cidrei](http://www.reddit.com/user/cidrei) on Reddit.
