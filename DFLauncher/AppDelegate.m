@@ -58,7 +58,10 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
 }
 
 - (IBAction)folderButtonClick: (id)sender {
-    system("open .");
+    const char *command =
+        [[@"open " stringByAppendingString: CURRENT_DIR] cStringUsingEncoding: NSUTF8StringEncoding];
+    
+    system(command);
 }
 
 - (IBAction)quitButtonClick: (id)sender {
