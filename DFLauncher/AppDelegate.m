@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  DFLauncher
-//
-//  Created by Electric Coffee on 11/02/15.
-//  Copyright (c) 2015 Electric Coffee. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
