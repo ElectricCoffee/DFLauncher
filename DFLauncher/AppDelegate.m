@@ -82,12 +82,6 @@ NSString *loadUTF8File(NSString *path) {
 - (IBAction)mute: (id)sender {
     NSData *result;
     NSFileManager *fm = [NSFileManager defaultManager];
-    /*
-    if ([sender state] == NSOffState)
-        result = replaceString(_fileContents, VOLUME_OFF, VOLUME_ON);
-    else
-        result = replaceString(_fileContents, VOLUME_ON, VOLUME_OFF);
-     */
     
     result = toggleReplaceString([sender state] == NSOffState, _fileContents, VOLUME_OFF, VOLUME_ON);
     
@@ -98,12 +92,7 @@ NSString *loadUTF8File(NSString *path) {
 - (IBAction)retinaMode:(id)sender {
     NSData *result;
     NSFileManager *fm = [NSFileManager defaultManager];
-    /*
-    if ([sender state] == NSOffState)
-        result = replaceString(_fileContents, RETINA_ON, RETINA_OFF);
-    else
-        result = replaceString(_fileContents, RETINA_OFF, RETINA_ON);
-    */
+    
     result = toggleReplaceString([sender state] == NSOffState, _fileContents, RETINA_ON, RETINA_OFF);
     
     [fm createFileAtPath: FILE_PATH contents: result attributes: nil];
