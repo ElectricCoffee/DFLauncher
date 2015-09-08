@@ -15,6 +15,7 @@
 
 // outlets
 @property (weak) IBOutlet NSButton *toggleMute;
+@property (weak) IBOutlet NSButton *toggleRetina;
 @property (weak) IBOutlet NSTextField *showCurrentPath;
 
 // actions
@@ -22,6 +23,7 @@
 - (IBAction)folderButtonClick: (id)sender;
 - (IBAction)quitButtonClick: (id)sender;
 - (IBAction)mute: (id)sender;
+- (IBAction)retinaMode:(id)sender;
 
 @end
 

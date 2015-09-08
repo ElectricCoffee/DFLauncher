@@ -398,6 +398,7 @@
 				682CA9061A8B634E00864E0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		682CA9071A8B634E00864E0B /* Build configuration list for PBXNativeTarget "DFLauncherTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +407,7 @@
 				682CA9091A8B634E00864E0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

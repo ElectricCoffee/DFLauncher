@@ -10,6 +10,8 @@ NSString *FILE_PATH;
 NSString *INIT_PATH  = @"/data/init/init.txt";
 NSString *VOLUME_ON  = @"[SOUND:YES]";
 NSString *VOLUME_OFF = @"[SOUND:NO]";
+NSString *RETINA_ON  = @"[PRINT_MODE:STANDARD]";
+NSString *RETINA_OFF = @"[PRINT_MODE:2D]";
 
 BOOL contains(NSString *a, NSString *b) {
     return [a rangeOfString: b].location != NSNotFound;
@@ -30,10 +32,17 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
     _fileContents = [NSString stringWithContentsOfFile: FILE_PATH
                                               encoding: NSUTF8StringEncoding
                                                  error: NULL];
+    // mute on/off
     if (contains(_fileContents, VOLUME_OFF))
         [_toggleMute setState: YES];
     if (contains(_fileContents, VOLUME_ON))
         [_toggleMute setState: NO];
+    
+    // retina screen fix on/off
+    if (contains(_fileContents, RETINA_OFF))
+        [_toggleRetina setState: NO];
+    if (contains(_fileContents, RETINA_ON))
+        [_toggleRetina setState: YES];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification { }
@@ -67,6 +76,17 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
         result = replaceString(_fileContents, VOLUME_OFF, VOLUME_ON);
     else
         result = replaceString(_fileContents, VOLUME_ON, VOLUME_OFF);
+    
+    [fm createFileAtPath: FILE_PATH contents: result attributes: nil];
+}
+
+- (IBAction)retinaMode:(id)sender {
+    NSData *result;
+    NSFileManager *fm = [NSFileManager defaultManager];
+    if ([sender state] == NSOffState)
+        result = replaceString(_fileContents, RETINA_ON, RETINA_OFF);
+    else
+        result = replaceString(_fileContents, RETINA_OFF, RETINA_ON);
     
     [fm createFileAtPath: FILE_PATH contents: result attributes: nil];
 }
