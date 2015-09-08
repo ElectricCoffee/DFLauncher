@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#define UPDATE_FILE _fileContents = loadUTF8File(FILE_PATH)
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
@@ -22,6 +22,17 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
             dataUsingEncoding: NSUTF8StringEncoding];
 }
 
+NSData *toggleReplaceString(BOOL toggle, NSString *fileContents, NSString *from, NSString *to) {
+    if (toggle) return replaceString(fileContents, from, to);
+    else return replaceString(fileContents, to, from);
+}
+
+NSString *loadUTF8File(NSString *path) {
+    return [NSString stringWithContentsOfFile: path
+                                     encoding: NSUTF8StringEncoding
+                                     error: NULL];
+}
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching: (NSNotification *)aNotification {
@@ -29,9 +40,8 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
     [_showCurrentPath setStringValue: CURRENT_DIR];
      
     FILE_PATH = [CURRENT_DIR stringByAppendingString: INIT_PATH];
-    _fileContents = [NSString stringWithContentsOfFile: FILE_PATH
-                                              encoding: NSUTF8StringEncoding
-                                                 error: NULL];
+    UPDATE_FILE; //_fileContents = loadUTF8File(FILE_PATH);
+    
     // mute on/off
     if (contains(_fileContents, VOLUME_OFF))
         [_toggleMute setState: YES];
@@ -72,22 +82,31 @@ NSData *replaceString(NSString *fileContents, NSString *from, NSString *to) {
 - (IBAction)mute: (id)sender {
     NSData *result;
     NSFileManager *fm = [NSFileManager defaultManager];
+    /*
     if ([sender state] == NSOffState)
         result = replaceString(_fileContents, VOLUME_OFF, VOLUME_ON);
     else
         result = replaceString(_fileContents, VOLUME_ON, VOLUME_OFF);
+     */
+    
+    result = toggleReplaceString([sender state] == NSOffState, _fileContents, VOLUME_OFF, VOLUME_ON);
     
     [fm createFileAtPath: FILE_PATH contents: result attributes: nil];
+    UPDATE_FILE;
 }
 
 - (IBAction)retinaMode:(id)sender {
     NSData *result;
     NSFileManager *fm = [NSFileManager defaultManager];
+    /*
     if ([sender state] == NSOffState)
         result = replaceString(_fileContents, RETINA_ON, RETINA_OFF);
     else
         result = replaceString(_fileContents, RETINA_OFF, RETINA_ON);
+    */
+    result = toggleReplaceString([sender state] == NSOffState, _fileContents, RETINA_ON, RETINA_OFF);
     
     [fm createFileAtPath: FILE_PATH contents: result attributes: nil];
+    UPDATE_FILE;
 }
 @end
