@@ -4,6 +4,9 @@ A simple launcher for Dwarf Fortress on OSX, for those who don't want to manuall
 ## Backstory
 I created this launcher to be able to simply run DF from the launchpad, without being forced to go in and find the `df` file every time I wanted to run the game.
 
+## 1.2 Update!
+I noticed Dwarf Fortress doesn't run in a high enough resolution out of the box on retina devices. So to accomodate this a `Retina Mode` toggle has been added
+
 ## Installation
 Just drop `DFLauncher.app` into the same folder `df` resides in (it should be called `df_osx` unless you changed it)
 * To obtain the file you need to compile it.
