@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D6AF4FB1BA19F9E0009D6E1 /* NSString+RichString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6AF4FA1BA19F9E0009D6E1 /* NSString+RichString.m */; };
 		682CA8EE1A8B634E00864E0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CA8ED1A8B634E00864E0B /* AppDelegate.m */; };
 		682CA8F01A8B634E00864E0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 682CA8EF1A8B634E00864E0B /* main.m */; };
 		682CA8F21A8B634E00864E0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 682CA8F11A8B634E00864E0B /* Images.xcassets */; };
@@ -25,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D6AF4F91BA19F9E0009D6E1 /* NSString+RichString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RichString.h"; sourceTree = "<group>"; };
+		1D6AF4FA1BA19F9E0009D6E1 /* NSString+RichString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RichString.m"; sourceTree = "<group>"; };
 		682CA8E71A8B634E00864E0B /* DFLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DFLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		682CA8EB1A8B634E00864E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		682CA8EC1A8B634E00864E0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				682CA8F11A8B634E00864E0B /* Images.xcassets */,
 				682CA8F31A8B634E00864E0B /* MainMenu.xib */,
 				682CA8EA1A8B634E00864E0B /* Supporting Files */,
+				1D6AF4F91BA19F9E0009D6E1 /* NSString+RichString.h */,
+				1D6AF4FA1BA19F9E0009D6E1 /* NSString+RichString.m */,
 			);
 			path = DFLauncher;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6AF4FB1BA19F9E0009D6E1 /* NSString+RichString.m in Sources */,
 				682CA8F01A8B634E00864E0B /* main.m in Sources */,
 				682CA8EE1A8B634E00864E0B /* AppDelegate.m in Sources */,
 			);

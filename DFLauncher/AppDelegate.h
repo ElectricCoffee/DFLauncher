@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <stdio.h>
+#import "NSString+RichString.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    NSString *_fileContents;
+    NSString *_fileContents, *_currentDir, *_filePath;
 }
 
 // outlets
