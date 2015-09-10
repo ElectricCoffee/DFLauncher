@@ -1,30 +1,16 @@
 #import "AppDelegate.h"
-//#define UPDATE_FILE _fileContents = loadUTF8File(FILE_PATH)
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
 @end
 
-NSString *const INIT_PATH  = @"/data/init/init.txt";
-NSString *const VOLUME_ON  = @"[SOUND:YES]";
-NSString *const VOLUME_OFF = @"[SOUND:NO]";
-NSString *const RETINA_ON  = @"[PRINT_MODE:STANDARD]";
-NSString *const RETINA_OFF = @"[PRINT_MODE:2D]";
-NSString *const FULL_ON    = @"[WINDOWED:NO]";
-NSString *const FULL_OFF   = @"[WINDOWED:YES]";
-
-//NSData *toggleReplaceString(BOOL toggle, NSString *fileContents, NSString *from, NSString *to) {
-//    if (toggle) //return replaceString(fileContents, from, to);
-//        return [fileContents replaceString: from withString: to];
-//    else //return replaceString(fileContents, to, from);
-//        return [fileContents replaceString: to withString: from];
-//}
-
-//NSString *loadUTF8File(NSString *path) {
-//    return [NSString stringWithContentsOfFile: path
-//                                     encoding: NSUTF8StringEncoding
-//                                     error: NULL];
-//}
+NSString *const INIT_PATH  = @"/data/init/init.txt"
+       , *const VOLUME_ON  = @"[SOUND:YES]"
+       , *const VOLUME_OFF = @"[SOUND:NO]"
+       , *const RETINA_ON  = @"[PRINT_MODE:STANDARD]"
+       , *const RETINA_OFF = @"[PRINT_MODE:2D]"
+       , *const FULL_ON    = @"[WINDOWED:NO]"
+       , *const FULL_OFF   = @"[WINDOWED:YES]";
 
 @implementation AppDelegate
 
@@ -38,14 +24,20 @@ NSString *const FULL_OFF   = @"[WINDOWED:YES]";
     // mute on/off
     if ([_fileContents containsString: VOLUME_OFF])
         [_toggleMute setState: YES];
-    if ([_fileContents containsString: VOLUME_ON])
+    else if ([_fileContents containsString: VOLUME_ON])
         [_toggleMute setState: NO];
     
     // retina screen fix on/off
     if ([_fileContents containsString: RETINA_OFF])
         [_toggleRetina setState: NO];
-    if ([_fileContents containsString: RETINA_ON])
+    else if ([_fileContents containsString: RETINA_ON])
         [_toggleRetina setState: YES];
+    
+    // full-screen on/off
+    if ([_fileContents containsString: FULL_OFF])
+        [_toggleFullScreen setState: NO];
+    else if ([_fileContents containsString: FULL_ON])
+        [_toggleFullScreen setState: YES];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification { }
@@ -73,28 +65,23 @@ NSString *const FULL_OFF   = @"[WINDOWED:YES]";
 }
 
 - (IBAction)mute: (id)sender {
-    NSData *result;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    result = //toggleReplaceString([sender state] == NSOffState, _fileContents, VOLUME_OFF, VOLUME_ON);
-        [_fileContents replaceString: VOLUME_OFF
-                          withString: VOLUME_ON
-                          withToggle: [sender state] == NSOffState];
-    
-    [fm createFileAtPath: _filePath contents: result attributes: nil];
-    _fileContents = [_filePath loadUTF8File];
+    _fileContents = [_fileContents replaceString: VOLUME_OFF
+                                      withString: VOLUME_ON
+                                      withSender: sender
+                                          inFile: _filePath];
 }
 
 - (IBAction)retinaMode: (id)sender {
-    NSData *result;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    result = //toggleReplaceString([sender state] == NSOffState, _fileContents, RETINA_ON, RETINA_OFF);
-        [_fileContents replaceString: RETINA_ON
-                          withString: RETINA_OFF
-                          withToggle: [sender state] == NSOffState];
-    
-    [fm createFileAtPath: _filePath contents: result attributes: nil];
-    _fileContents = [_filePath loadUTF8File];
+    _fileContents = [_fileContents replaceString: RETINA_ON
+                                      withString: RETINA_OFF
+                                      withSender: sender
+                                          inFile: _filePath];
+}
+
+- (IBAction)fullScreenMode:(id)sender {
+    _fileContents = [_fileContents replaceString: FULL_ON
+                                      withString: FULL_OFF
+                                      withSender: sender
+                                          inFile: _filePath];
 }
 @end

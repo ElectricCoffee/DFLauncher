@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSButton *toggleMute;
 @property (weak) IBOutlet NSButton *toggleRetina;
 @property (weak) IBOutlet NSTextField *showCurrentPath;
+@property (weak) IBOutlet NSButton *toggleFullScreen;
 
 // actions
 - (IBAction)playButtonClick: (id)sender;
@@ -25,6 +26,7 @@
 - (IBAction)quitButtonClick: (id)sender;
 - (IBAction)mute: (id)sender;
 - (IBAction)retinaMode:(id)sender;
+- (IBAction)fullScreenMode:(id)sender;
 
 @end
 

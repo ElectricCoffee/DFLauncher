@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="toggleFullScreen" destination="uMv-5G-XwA" id="YlF-hS-jI5"/>
                 <outlet property="toggleMute" destination="U4A-OG-J8W" id="RgG-h6-R1Q"/>
                 <outlet property="toggleRetina" destination="cQH-Ro-fDz" id="kl0-JO-3Pw"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -669,7 +670,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="DFLauncher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="DFLauncher v. 1.3.0" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="478" y="363" width="344" height="151"/>
@@ -728,6 +729,16 @@
                         </buttonCell>
                         <connections>
                             <action selector="quitButtonClick:" target="Voe-Tx-rLC" id="eSp-vC-Lhj"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMv-5G-XwA">
+                        <rect key="frame" x="75" y="85" width="93" height="18"/>
+                        <buttonCell key="cell" type="check" title="Full-Screen" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bDe-jH-nLk">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="fullScreenMode:" target="Voe-Tx-rLC" id="XFW-aQ-efA"/>
                         </connections>
                     </button>
                 </subviews>

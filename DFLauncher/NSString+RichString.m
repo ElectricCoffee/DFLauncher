@@ -20,8 +20,19 @@
     else return [self replaceString: newStr withString: oldStr];
 }
 
+- (NSString *) replaceString: (NSString *)oldStr withString: (NSString *)newStr withSender: (id)sender inFile: (NSString *)path {
+    NSData *result = [self replaceString: oldStr
+                              withString: newStr
+                              withToggle: [sender state] == NSOffState];
+    
+    [[NSFileManager defaultManager] createFileAtPath: path contents: result attributes: nil];
+    return [path loadUTF8File];
+}
+
 - (NSString *) loadUTF8File {
     return [NSString stringWithContentsOfFile: self encoding: NSUTF8StringEncoding error: NULL];
 }
+
+
 
 @end
